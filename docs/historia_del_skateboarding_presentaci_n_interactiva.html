@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Skateboarding | Siente la Calle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Grotesk:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#FFE600',
+                            orange: '#FF5500',
+                            dark: '#0D0D0E',
+                            card: '#16161A',
+                            accent: '#22222A'
+                        }
+                    },
+                    fontFamily: {
+                        marker: ['"Permanent Marker"', 'cursive'],
+                        sans: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D0D0E;
+            color: #EEEEEE;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+        }
+
+        .urban-bg {
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 230, 0, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(255, 85, 0, 0.08) 0%, transparent 50%),
+                linear-gradient(rgba(13, 13, 14, 0.85), rgba(13, 13, 14, 0.95));
+        }
+
+        .slide {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.96) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        .text-glow-yellow {
+            text-shadow: 0 0 15px rgba(255, 230, 0, 0.4);
+        }
+        
+        .box-glow {
+            box-shadow: 0 0 25px rgba(255, 230, 0, 0.15);
+        }
+
+        .img-placeholder-bg {
+            background: repeating-linear-gradient(
+                45deg,
+                #16161A,
+                #16161A 10px,
+                #22222A 10px,
+                #22222A 20px
+            );
+        }
+    </style>
+</head>
+<body class="h-full w-full urban-bg select-none relative">
+
+    <header class="fixed top-0 left-0 w-full z-50 p-4 sm:p-6 flex justify-between items-center backdrop-blur-md bg-black/30 border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <span class="bg-brand-yellow text-black font-extrabold px-2.5 py-1 text-xs sm:text-sm tracking-wider uppercase font-marker rotate-[-2deg]">SKATE</span>
+            <span class="text-xs sm:text-sm font-semibold tracking-widest text-gray-400 hidden sm:inline-block">HISTORIA DEL SKATEBOARDING</span>
+        </div>
+
+        <div class="flex items-center gap-2" id="dots-container"></div>
+
+        <div class="flex items-center gap-2">
+            <button id="fullscreen-btn" title="Pantalla Completa" class="p-2 text-gray-400 hover:text-brand-yellow transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-yellow to-brand-orange z-50 transition-all duration-300" id="progress-bar" style="width: 20%;"></div>
+
+    <main class="w-full h-full relative overflow-hidden pt-16 pb-20 px-4 sm:px-8">
+        
+        <!-- DIAPOSITIVA 1: Portada -->
+        <section class="slide active" id="slide-0">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-6 text-left">
+                    <div class="inline-block bg-brand-orange text-black font-bold text-xs uppercase px-3 py-1 rounded-full font-sans tracking-widest">
+                        Cultura & Asfalto
+                    </div>
+                    <h1 class="text-5xl sm:text-7xl font-black tracking-tight leading-none text-white uppercase">
+                        Historia del <br>
+                        <span class="text-brand-yellow font-marker text-glow-yellow">Skateboarding</span>
+                    </h1>
+                    <p class="text-gray-300 text-lg sm:text-xl font-light leading-relaxed max-w-xl">
+                        Un viaje desde las olas de California hasta la cima del deporte global. Descubre cómo una tabla con ruedas conquistó la cultura urbana mundial.
+                    </p>
+                    <div class="pt-4 flex items-center gap-4">
+                        <button onclick="nextSlide()" class="px-8 py-4 bg-brand-yellow hover:bg-yellow-400 text-black font-extrabold uppercase tracking-wider rounded-none transform -skew-x-12 transition-all hover:scale-105 box-glow flex items-center gap-2">
+                            <span>Siente la Calle</span>
+                            <svg class="w-5 h-5 transform skew-x-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-yellow to-brand-orange rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-xl border border-white/10 bg-brand-card img-placeholder-bg aspect-[4/3] sm:aspect-square flex items-center justify-center">
+                        <img src="images/historia1.webp" alt="Historia 1 - Portada Skateboarding" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAPOSITIVA 2: Orígenes -->
+        <section class="slide" id="slide-1">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 order-2 md:order-1 relative group">
+                    <div class="absolute -inset-1 bg-brand-yellow rounded-xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-xl border border-white/10 bg-brand-card img-placeholder-bg aspect-4/3 flex items-center justify-center">
+                        <img src="images/historia2.avif" alt="Historia 2 - Orígenes del Skate" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+                <div class="md:col-span-7 order-1 md:order-2 space-y-5 text-left">
+                    <span class="text-brand-yellow font-marker text-2xl">01 // 1950 - 1960</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase text-white">
+                        Sidewalk Surfing & Ruedas de Arcilla
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Nació cuando los surfistas de California buscaron una alternativa cuando el mar estaba en calma. Clavaron ejes de patines de hule a tablas de madera.
+                    </p>
+                    <ul class="space-y-3 pt-2 text-sm sm:text-base text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-orange font-bold">►</span>
+                            <span><strong>Ruedas de Arcilla/Metal:</strong> Un agarre deficiente y caídas impredecibles en el asfalto.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-orange font-bold">►</span>
+                            <span><strong>Cultura Inicial:</strong> Maniobras enfocadas totalmente en imitar el surf sobre las aceras.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAPOSITIVA 3: Revolución Z-Boys -->
+        <section class="slide" id="slide-2">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-5 text-left">
+                    <span class="text-brand-orange font-marker text-2xl">02 // Años 1970</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase text-white">
+                        Poliuretano & La Revolución Z-Boys
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        En 1972, <strong>Frank Nasworthy</strong> inventa las ruedas de poliuretano, cambiando el agarre y la velocidad para siempre.
+                    </p>
+                    <div class="bg-brand-card p-4 rounded-lg border-l-4 border-brand-yellow my-3">
+                        <p class="text-gray-300 text-sm italic">
+                            "La sequía en California dejó miles de piscinas vacías. Los legendarios Z-Boys de Santa Mónica transformaron estas piscinas en el cimiento del skate de rampa (Vert)."
+                        </p>
+                    </div>
+                </div>
+                <div class="md:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-brand-orange rounded-xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-xl border border-white/10 bg-brand-card img-placeholder-bg aspect-4/3 flex items-center justify-center">
+                        <img src="images/historia3.png" alt="Historia 3 - Era de los Z-Boys" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAPOSITIVA 4: Era Dorada -->
+        <section class="slide" id="slide-3">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 order-2 md:order-1 relative group">
+                    <div class="absolute -inset-1 bg-brand-yellow rounded-xl blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-xl border border-white/10 bg-brand-card img-placeholder-bg aspect-4/3 flex items-center justify-center">
+                        <img src="images/historia4.jpg" alt="Historia 4 - Street Skate Años 80 y 90" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+                <div class="md:col-span-7 order-1 md:order-2 space-y-5 text-left">
+                    <span class="text-brand-yellow font-marker text-2xl">03 // Años 1980 - 1990</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase text-white">
+                        Era Dorada, Street & Cultura VHS
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        El skate salta a las calles urbanas. <strong>Rodney Mullen</strong> inventa el <em>flatground ollie</em> y trucos técnicos modernos, mientras <strong>Tony Hawk</strong> domina las rampas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="bg-black/50 p-3 rounded border border-white/5">
+                            <h4 class="font-bold text-brand-yellow text-sm">Cultura Hip-Hop & Punk</h4>
+                            <p class="text-xs text-gray-400">Moda, música y vídeos en formato VHS impulsan el estilo de vida.</p>
+                        </div>
+                        <div class="bg-black/50 p-3 rounded border border-white/5">
+                            <h4 class="font-bold text-brand-yellow text-sm">Explosión X-Games</h4>
+                            <p class="text-xs text-gray-400">Comienza la profesionalización y retransmisión televisiva masiva.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAPOSITIVA 5: Presente -->
+        <section class="slide" id="slide-4">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-5 text-left">
+                    <span class="text-brand-orange font-marker text-2xl">04 // 2000 - Presente</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase text-white">
+                        Globalización & Juegos Olímpicos
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Lo que comenzó como una subcultura rebelde de calle se consolidó como una disciplina global inclusiva y diversa.
+                    </p>
+                    <ul class="space-y-3 text-sm sm:text-base text-gray-400">
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-brand-yellow"></span>
+                            <span><strong>Tokio 2020:</strong> Debut oficial como deporte olímpico en modalidades Park y Street.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 rounded-full bg-brand-yellow"></span>
+                            <span><strong>Inclusión Total:</strong> Diversidad de género y expansión mundial masiva.</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4">
+                        <button onclick="goToSlide(0)" class="px-6 py-3 border border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-black font-bold uppercase text-sm tracking-widest transition">
+                            Volver al Inicio ↻
+                        </button>
+                    </div>
+                </div>
+                <div class="md:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-orange to-brand-yellow rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative overflow-hidden rounded-xl border border-white/10 bg-brand-card img-placeholder-bg aspect-4/3 flex items-center justify-center">
+                        <img src="images/historia5.jpg" alt="Historia 5 - Skate Moderno" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fixed bottom-0 left-0 w-full p-4 sm:p-6 z-50 flex justify-between items-center pointer-events-none">
+        <div class="text-xs text-gray-500 font-mono tracking-widest pointer-events-auto hidden sm:block">
+            USA TECLAS [←] [→] O DESLIZA
+        </div>
+
+        <div class="flex items-center gap-4 ml-auto pointer-events-auto">
+            <button id="prev-btn" onclick="prevSlide()" class="w-12 h-12 bg-black/60 hover:bg-brand-yellow hover:text-black border border-white/20 rounded-full flex items-center justify-center transition text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <span id="slide-counter" class="font-marker text-brand-yellow text-lg min-w-[50px] text-center">1 / 5</span>
+            <button id="next-btn" onclick="nextSlide()" class="w-12 h-12 bg-black/60 hover:bg-brand-yellow hover:text-black border border-white/20 rounded-full flex items-center justify-center transition text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progress-bar');
+        const slideCounter = document.getElementById('slide-counter');
+        const dotsContainer = document.getElementById('dots-container');
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-brand-yellow w-6' : 'bg-gray-600 hover:bg-gray-400'}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updatePresentation() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            createDots();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updatePresentation();
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = totalSlides - 1;
+            }
+            updatePresentation();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updatePresentation();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
+            }
+        }
+
+        document.getElementById('fullscreen-btn').addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        updatePresentation();
+    </script>
+</body>
+</html>
